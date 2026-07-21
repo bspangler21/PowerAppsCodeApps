@@ -25,13 +25,6 @@ to document exactly where the two approaches diverge.
 - **Connector-only data layer** — Every call goes through the connector's auto‑generated
   `MicrosoftDataverseService`; no native Dataverse services are used.
 
-## Screenshots
-
-| Contacts | Accounts | Functions & Actions |
-| --- | --- | --- |
-| ![Contacts tab](screenshots/contacts.png) | ![Accounts tab](screenshots/accounts.png) | ![Functions & Actions tab](screenshots/functions-actions.png) |
-
-
 ## Native Dataverse vs. the Dataverse connector
 
 There are two ways to reach Dataverse from a Code App, and they produce **different** generated
