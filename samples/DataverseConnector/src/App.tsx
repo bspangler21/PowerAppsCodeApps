@@ -9,7 +9,7 @@
  * - CRUD operations (Create, Read, Update, Delete) on Contact and Account tables
  * - Lookup fields (linking Contacts to Accounts)
  * - File & image upload/download (AccountForm attachment sub-form)
- * - Dataverse functions & actions (WhoAmI via PerformUnboundAction)
+ * - Advanced queries & metadata (OData query, FetchXML, GetEntities) via the connector
  * - Error handling and best practices
  *
  * ARCHITECTURE PATTERN:

@@ -32,7 +32,16 @@ export function ContactCard({
   return (
     <div
       className={`contact-card ${isSelected ? "selected" : ""}`}
+      role="button"
+      tabIndex={0}
+      aria-pressed={isSelected}
       onClick={() => onSelect(contact)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onSelect(contact);
+        }
+      }}
     >
       <h3>
         {contact.firstname} {contact.lastname}

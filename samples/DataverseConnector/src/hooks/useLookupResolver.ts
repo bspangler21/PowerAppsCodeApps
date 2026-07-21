@@ -58,6 +58,9 @@ export function useLookupResolver(contact: Contacts | null) {
     }
 
     const current = contact
+    // Guard against stale updates: if `contact` changes or the component unmounts before the
+    // async resolution finishes, don't call setState from the outdated run.
+    let isActive = true
 
     async function fetchLookupNames() {
       setLoading(true)
@@ -80,15 +83,21 @@ export function useLookupResolver(contact: Contacts | null) {
           ),
         ])
 
-        setResolvedLookups({ createdBy, currency, parentContact: '', managingPartner, owningTeam })
+        if (isActive) {
+          setResolvedLookups({ createdBy, currency, parentContact: '', managingPartner, owningTeam })
+        }
       } catch (err) {
         console.error('Error fetching lookup names:', err)
       } finally {
-        setLoading(false)
+        if (isActive) setLoading(false)
       }
     }
 
     fetchLookupNames()
+
+    return () => {
+      isActive = false
+    }
   }, [contact])
 
   return { resolvedLookups, loading }

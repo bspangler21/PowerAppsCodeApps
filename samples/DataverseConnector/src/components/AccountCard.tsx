@@ -20,7 +20,16 @@ export function AccountCard({ account, isSelected, onSelect }: AccountCardProps)
   return (
     <div
       className={`contact-card ${isSelected ? 'selected' : ''}`}
+      role="button"
+      tabIndex={0}
+      aria-pressed={isSelected}
       onClick={() => onSelect(account)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onSelect(account);
+        }
+      }}
     >
       <h3>{account.name}</h3>
 
